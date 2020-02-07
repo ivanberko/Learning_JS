@@ -78,3 +78,7 @@ console.log(arraySort.sort((a, b) => a - b));
 console.log(arraySort.sort((a, b) => b - a));
 
 console.log(arraySort.reduce((res, el) => res + el, 0));
+
+console.log(arraySort.some(el => el % 2 === 0));
+console.log(arraySort.every(el => el % 2 === 0));
+

@@ -21,15 +21,15 @@ const guests = [
     visitHistory: [
       {
         startDate: "03.07.1996",
-        endDay: "09.07.1996"
+        endDate: "09.07.1996"
       },
       {
         startDate: "23.11.1998",
-        endDay: "02.12.1998"
+        endDate: "02.12.1998"
       },
       {
         startDate: "05.05.2001",
-        endDay: "07.05.2000"
+        endDate: "07.05.2001"
       }
     ],
     isMarriage: true,
@@ -49,7 +49,7 @@ const guests = [
     visitHistory: [
       {
         startDate: "03.07.2009",
-        endDay: "06.07.2009"
+        endDate: "06.07.2009"
       }
     ],
     isMarriage: false,
@@ -69,11 +69,11 @@ const guests = [
     visitHistory: [
       {
         startDate: "24.02.1994",
-        endDay: "28.02.1994"
+        endDate: "28.02.1994"
       },
       {
         startDate: "01.05.1996",
-        endDay: "18.05.1996"
+        endDate: "18.05.1996"
       }
     ],
     isMarriage: true,
@@ -88,15 +88,15 @@ const guests = [
     visitHistory: [
       {
         startDate: "02.02.2003",
-        endDay: "05.02.2003"
+        endDate: "05.02.2003"
       },
       {
         startDate: "01.05.2007",
-        endDay: "18.05.2007"
+        endDate: "18.05.2007"
       },
       {
         startDate: "18.04.2012",
-        endDay: "28.04.2012"
+        endDate: "28.04.2012"
       }
     ],
     isMarriage: false,
@@ -130,13 +130,6 @@ const sortByQuntity = geustArr =>
 // console.log(sortByQuntity(guests));
 
 const formatDate = dataString => {
-  // const date = '';
-  // for (let i = 0; i < dataString.length; i +=1) {
-  //   if(dataString[i] === '.'){
-  //     date += `${dataString.slice(0, i)}`
-  //   }
-  // }
-
   const firstIndex = dataString.indexOf(".");
   const day = dataString.slice(0, firstIndex);
   const secondIndex = dataString.indexOf(".", firstIndex + 1);
@@ -145,27 +138,20 @@ const formatDate = dataString => {
   return `${year}-${month}-${day}`;
 };
 
-console.log(formatDate("01.12.2002"));
+// console.log(formatDate("01.12.2002"));
 
-const calcDuration = arrVisit =>
-  arrVisit.reduce((result, visit) => {
+const calcDuration = arrVisits =>
+  arrVisits.reduce((result, visit) => {
     result +=
-      Date.parse(formatDate(visit.endDay)) -
+      Date.parse(formatDate(visit.endDate)) -
       Date.parse(formatDate(visit.startDate));
     return result;
   }, 0);
 
-console.log(
-  calcDuration([
-    {
-      startDate: "03.07.2009",
-      endDay: "06.07.2009"
-    }
-  ]) /
-    1000 /
-    60 /
-    60 /
-    24
-);
+const getDurationUserVisits = array =>
+  array
+    .map(visits => calcDuration(visits.visitHistory) / 1000 / 60 / 60 / 24)
+    .sort((a, b) => b - a);
+console.log(getDurationUserVisits(guests));
 
-// вернуть массив пользователей, кто провел больше всего времени в отеле за все визиты.
+// вернуть массив пользователей, кто провел больше всего времени в отеле за все время

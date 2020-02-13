@@ -49,7 +49,7 @@ const guests = [
     visitHistory: [
       {
         startDate: "03.07.2009",
-        endDate: "06.07.2009"
+        endDate: "31.08.2011"
       }
     ],
     isMarriage: false,
@@ -68,12 +68,8 @@ const guests = [
     discountLevel: discount.regular,
     visitHistory: [
       {
-        startDate: "24.02.1994",
-        endDate: "28.02.1994"
-      },
-      {
-        startDate: "01.05.1996",
-        endDate: "18.05.1996"
+        startDate: "03.07.2009",
+        endDate: "31.08.2010"
       }
     ],
     isMarriage: true,
@@ -148,10 +144,15 @@ const calcDuration = arrVisits =>
     return result;
   }, 0);
 
-const getDurationUserVisits = array =>
-  array
-    .map(visits => calcDuration(visits.visitHistory) / 1000 / 60 / 60 / 24)
-    .sort((a, b) => b - a);
+const getDurationUserVisits = array => {
+  return array
+    .map(visits => ({
+      fullName: `${visits.firstName} ${visits.lastName}`,
+      quantityDay: calcDuration(visits.visitHistory) / 1000 / 60 / 60 / 24
+    }))
+    .reduce((prev, cur) => (prev.quantityDay > cur.quantityDay ? prev : cur));
+};
+
 console.log(getDurationUserVisits(guests));
 
 // вернуть массив пользователей, кто провел больше всего времени в отеле за все время

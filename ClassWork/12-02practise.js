@@ -48,8 +48,16 @@ const guests = [
     discountLevel: discount.regular,
     visitHistory: [
       {
-        startDate: "03.07.2009",
-        endDate: "31.08.2011"
+        startDate: "23.05.2013",
+        endDate: "01.06.2013"
+      },
+      {
+        startDate: "23.12.2015",
+        endDate: "02.01.2016"
+      },
+      {
+        startDate: "05.07.2016",
+        endDate: "19.07.2016"
       }
     ],
     isMarriage: false,
@@ -69,7 +77,7 @@ const guests = [
     visitHistory: [
       {
         startDate: "03.07.2009",
-        endDate: "31.08.2010"
+        endDate: "17.07.2009"
       }
     ],
     isMarriage: true,
@@ -83,16 +91,12 @@ const guests = [
     discountLevel: discount.regular,
     visitHistory: [
       {
-        startDate: "02.02.2003",
-        endDate: "05.02.2003"
+        startDate: "03.07.1990",
+        endDate: "31.07.1990"
       },
       {
-        startDate: "01.05.2007",
-        endDate: "18.05.2007"
-      },
-      {
-        startDate: "18.04.2012",
-        endDate: "28.04.2012"
+        startDate: "03.10.1999",
+        endDate: "21.10.1999"
       }
     ],
     isMarriage: false,
@@ -142,15 +146,20 @@ const calcDuration = arrVisits =>
       Date.parse(formatDate(visit.endDate)) -
       Date.parse(formatDate(visit.startDate));
     return result;
-  }, 0) / 1000 / 60 / 60 / 24;
+  }, 0) /
+  1000 /
+  60 /
+  60 /
+  24;
 
 const getDurationUserVisits = array => {
   return array
-    .map(visits => ({
-      fullName: `${visits.firstName} ${visits.lastName}`,
-      quantityDay: calcDuration(visits.visitHistory)
+    .map(user => ({
+      fullName: `${user.firstName} ${user.lastName}`,
+      quantityDays: calcDuration(user.visitHistory)
     }))
-    .reduce((max, elem) => (max.quantityDay > elem.quantityDay ? max : elem));
+    .sort((prev, next) => next.quantityDays - prev.quantityDays)
+    .filter((user, idx, arr) => arr[0].quantityDays === user.quantityDays);
 };
 
 console.log(getDurationUserVisits(guests));

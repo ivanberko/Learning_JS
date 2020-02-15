@@ -142,15 +142,15 @@ const calcDuration = arrVisits =>
       Date.parse(formatDate(visit.endDate)) -
       Date.parse(formatDate(visit.startDate));
     return result;
-  }, 0);
+  }, 0) / 1000 / 60 / 60 / 24;
 
 const getDurationUserVisits = array => {
   return array
     .map(visits => ({
       fullName: `${visits.firstName} ${visits.lastName}`,
-      quantityDay: calcDuration(visits.visitHistory) / 1000 / 60 / 60 / 24
+      quantityDay: calcDuration(visits.visitHistory)
     }))
-    .reduce((prev, cur) => (prev.quantityDay > cur.quantityDay ? prev : cur));
+    .reduce((max, elem) => (max.quantityDay > elem.quantityDay ? max : elem));
 };
 
 console.log(getDurationUserVisits(guests));

@@ -13,8 +13,8 @@ const discount = {
 
 const guests = [
   {
-    firstName: "John",
-    lastName: "Doe",
+    firstName: "Rachel",
+    lastName: "Green",
     birthDay: "01.01.1989",
     gender: gender.male,
     discountLevel: discount.regular,
@@ -41,8 +41,8 @@ const guests = [
     ]
   },
   {
-    firstName: "Angelica",
-    lastName: "True",
+    firstName: "Monica",
+    lastName: "Geller",
     birthDay: "02.12.1999",
     gender: gender.female,
     discountLevel: discount.regular,
@@ -69,8 +69,8 @@ const guests = [
     ]
   },
   {
-    firstName: "Jouy",
-    lastName: "Tribiani",
+    firstName: "Phoebe",
+    lastName: "Buffay",
     birthDay: "12.09.1987",
     gender: gender.male,
     discountLevel: discount.regular,
@@ -84,9 +84,57 @@ const guests = [
     children: []
   },
   {
-    firstName: "Chen",
-    lastName: "Bink",
+    firstName: "Joey",
+    lastName: "Tribbiani",
     birthDay: "23.12.1965",
+    gender: gender.male,
+    discountLevel: discount.regular,
+    visitHistory: [
+      {
+        startDate: "24.08.1987",
+        endDate: "31.08.1987"
+      },
+      {
+        startDate: "13.10.1995",
+        endDate: "30.10.1995"
+      }
+    ],
+    isMarriage: false,
+    children: [
+      {
+        name: "Susi",
+        age: 23
+      }
+    ]
+  },
+  {
+    firstName: "Chandler",
+    lastName: "Bing",
+    birthDay: "16.04.1968",
+    gender: gender.male,
+    discountLevel: discount.regular,
+    visitHistory: [
+      {
+        startDate: "24.09.1995",
+        endDate: "01.10.1995"
+      },
+      {
+        startDate: "01.10.2000",
+        endDate: "12.10.2000"
+      }
+    ],
+    isMarriage: false,
+    children: [
+      {
+        name: "Susi",
+        age: 23
+      }
+    ]
+  },
+  {
+    firstName: "Ross",
+    lastName: "Geller",
+    birthDay: "31.12.1970",
     gender: gender.male,
     discountLevel: discount.regular,
     visitHistory: [
@@ -164,4 +212,4 @@ const getDurationUserVisits = array => {
 
 console.log(getDurationUserVisits(guests));
 
-// вернуть массив пользователей, кто провел больше всего времени в отеле за все время
+// вернуть массив пользователей, кто провел больше всего времени в отеле за все время, с учетом если таких пользователей несколькою

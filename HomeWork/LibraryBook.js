@@ -1,5 +1,5 @@
 "use strict";
-
+/*
 const LibraryBook = function(_title, _year, _author) {
   const title = _title;
   const year = _year;
@@ -30,6 +30,40 @@ const LibraryBook = function(_title, _year, _author) {
     readerData = null;
   };
 };
+*/
+
+class LibraryBook {
+  constructor(title, year, author) {
+    this._title = title;
+    this._year = year;
+    this._author = author;
+    this.readerName = null;
+    this.readerData = null;
+  }
+
+  giveTheBook(client, data = new Date()) {
+    this.readerName = client;
+    this.readerData = data;
+  }
+
+  getBookInfo() {
+    const message = this.readerData ? `выдана на руки` : `есть в наличии`;
+    console.info(`${this._author}, ${this._title}, ${this._year}: ${message}`);
+  }
+
+  getTheBook(client, data) {
+    if (this.readerData) {
+      return null;
+    } else {
+      this.giveTheBook(client, data);
+    }
+  }
+
+  returnBook() {
+    this.readerName = null;
+    this.readerData = null;
+  }
+}
 
 const books = [];
 books[0] = new LibraryBook("Война и мир", "1995", "Лев Толстой");

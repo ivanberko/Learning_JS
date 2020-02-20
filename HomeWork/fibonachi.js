@@ -14,10 +14,11 @@
 //   console.log(Fib);
 // }
 
-const fib = function(A, n) {
+const fib = function(A) {
   let F;
-  let a = n - 2;
-  let b = n - 1;
+  let a = 0;
+  let b = 1;
+  let n = 2;
   return function fibonachi() {
     F = a + b;
     a = b;
@@ -32,6 +33,12 @@ const fib = function(A, n) {
   };
 };
 
-const result = fib(10, 2);
+const result = fib(10);
 
 result();
+
+// function fib(n) {
+//   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// }
+
+// console.log(fib(10));

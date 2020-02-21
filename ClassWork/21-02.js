@@ -10,6 +10,7 @@
 // map.clear() – очищает коллекцию от всех элементов.
 // map.size – возвращает текущее количество элементов.
 
+/*
 let map = new Map();
 map.set("1", "num");
 map.set(1, "num1");
@@ -37,6 +38,7 @@ let prices = Object.fromEntries([
 ]);
 
 console.log(prices);
+*/
 
 // SET---------------------------------------------------------------------------------------------------------------------
 
@@ -46,7 +48,7 @@ console.log(prices);
 // set.has(value) – возвращает true, если значение присутствует в множестве, иначе false.
 // set.clear() – удаляет все имеющиеся значения.
 // set.size – возвращает количество элементов в множестве.
-
+/*
 let set = new Set();
 
 let john = { name: "John" };
@@ -102,3 +104,86 @@ function aclean(arr) {
 }
 
 console.log(aclean(arr));
+*/
+
+//setTimeout, setInterval==========================================================================================================================
+
+// console.log("Message 01");
+// const timerId = setTimeout(
+//   name => {
+//     console.log(`Hi ${name}`);
+//   },
+//   5000,
+//   "Ivan"
+// );
+
+// clearTimeout(timerId);
+// setTimeout(
+//   name => {
+//     console.log(`Hi ${name}`);
+//   },
+//   2000,
+//   "Bob"
+// );
+
+// const timerID = setInterval(
+//   name => {
+//     console.log(`Hi ${name}`);
+//   },
+//   1000,
+//   "Mango"
+// );
+
+// clearInterval(timerID);
+
+// setTimeout(
+//   name => {
+//     console.log(`Hi ${name}`);
+//     setTimeout(
+//       name => {
+//         console.log(`Hi ${name}`);
+//       },
+//       2000,
+//       "Bob"
+//     );
+//   },
+//   2000,
+//   "Ivan"
+// );
+
+//Promise==========================================================================================================================
+
+// const promise = new Promise((resolve, reject) => {
+//   if (!true) {
+//     setTimeout(() => resolve("done"), 1000);
+//   } else {
+//     setTimeout(() => reject(new Error("error")), 1000);
+//   }
+// });
+
+// promise.then(result => alert(result));
+
+// promise.catch(error => alert(error));
+
+// promise.finally(() => alert("finally"));
+
+// Promise.all([
+//   new Promise(resolve => setTimeout(() => resolve(1), 3000)), // 1
+//   new Promise(resolve => setTimeout(() => resolve(2), 2000)), // 2
+//   new Promise(resolve => setTimeout(() => resolve(3), 1000)) // 3
+// ]).then(e => console.log(e)); // когда все промисы выполнятся, результат будет 1,2,3
+// каждый промис даёт элемент массива
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("first"), 1500);
+});
+promise1.then(result => console.log(result));
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("second"), 3000);
+});
+promise2.then(result => console.log(result));
+
+const promiseAll = Promise.all([promise1, promise2]).then(e =>
+  console.log("PromisAll")
+);

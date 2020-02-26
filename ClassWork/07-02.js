@@ -1,4 +1,4 @@
-"use strict";
+
 
 // CLOSURES-------------------------------------------------------
 
@@ -30,19 +30,19 @@ function test1(a) {
 console.log(test1(99)(1));
 
 const user = {
-  name: "Ivan",
+  name: 'Ivan',
   getName: function(title) {
     return `${title} ${this.name}`;
-  }
+  },
 };
 
 console.log(user.getName());
 
 const user1 = {
-  name: "Bob",
+  name: 'Bob',
   getName: function() {
     return this.name;
-  }
+  },
 };
 
 console.log(user.getName.call(user1, 'Mr.'));

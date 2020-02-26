@@ -1,5 +1,3 @@
-"use strict";
-
 /* const arr = [1,2,3,4,];
 
 console.log(arr.pop());
@@ -22,7 +20,7 @@ console.table(arr); */
 
 // =====================================================================
 
-/*const matrix = [
+/* const matrix = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9]

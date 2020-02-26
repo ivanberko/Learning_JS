@@ -1,3 +1,4 @@
+
 'use strict';
 
 var userName;
@@ -18,6 +19,6 @@ const text = '56';
 const textToBoolean = Boolean(text);
 console.log(textToBoolean);
 
-[] + '' // ''
+[] + ''; // ''
 
-console.log(typeof(typeof(true))); // string
+console.log(typeof typeof true); // string

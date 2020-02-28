@@ -9,6 +9,15 @@ const discounts = {
   hight: 10,
 };
 
+const room = ['standart', 'superior', 'FamilyRoom', 'DeLux'];
+
+const costOfLiving = {
+  standart: 100,
+  superior: 155,
+  familyRoom: 205,
+  deLux: 265,
+};
+
 class Guest {
   static getUserByGender(guestArray, gender) {
     return guestArray.filter((guest) => guest.gender === gender);
@@ -24,21 +33,28 @@ class Guest {
         visitsNumber: guest.visitsHistory.length,
       }));
   }
-  constructor(firstName, lastName, birthDate, gender, isMarriage) {
+
+  constructor(firstName, lastName, birthDate, gender, isMarriage, room) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.birthDate = birthDate;
     this.gender = gender;
     this.discountLevel = discounts.regular;
     this.visitsHistory = [];
+    this.room = room;
+    this.costOfLiving = costOfLiving[room];
     this.isMarriage = isMarriage;
     this.children = [];
   }
   calcDuration() {
     return this.visitsHistory.reduce((result, visit) => {
       result += Date.parse(visit.endDate) - Date.parse(visit.startDate);
-      return result;
+      return result / (1000 * 60 * 60 * 24);
     }, 0);
+  }
+  calculateCostOfLiving(room) {
+    const duration = this.calcDuration();
+    this.costOfLiving = duration * costOfLiving[room];
   }
   calcDiscount() {
     const duration = this.calcDuration();
@@ -197,13 +213,16 @@ function createUser() {
   const birthDate = prompt('What is your birthday?');
   const gender = confirm('Are you a man?') ? 'male' : 'female';
   const isMarriage = confirm('Are you marriage?');
+  const room = prompt('Which room would you like to stay in?');
   const newGuest = new Guest(
     firstName,
     lastName,
     birthDate,
     gender,
     isMarriage,
+    room,
   );
+
   const startDate = new Date();
   const endDate = new Date();
   endDate.setDate(
@@ -221,12 +240,15 @@ function createUser() {
       newGuest.addChildren(childName, childAge);
     }
   }
-
+  newGuest.calculateCostOfLiving(room);
   newGuest.calcDiscount();
 
-  guests.push(newGuest);
+  if (newGuest.discountLevel) {
+    newGuest.costOfLiving +=
+      (newGuest.costOfLiving * newGuest.discountLevel) / 100;
+  }
   return newGuest;
 }
 
 const ourGuest = createUser();
-console.dir(guests);
+console.dir(ourGuest);

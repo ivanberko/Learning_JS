@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>11-03</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>birthDate</th>
+        <th>gender</th>
+        <th>discountLevel</th>
+        <th>visits</th>
+        <th>isMarriage</th>
+        <th>children</th>
+      </tr>
+    </table>
+
+    <button class="add-guest">Add guest</button>
+
+    <div class="overlay">
+      <form action="">
+        <h2>NEW GUEST</h2>
+        <div class="content">
+          <label for="firstName">first Name</label>
+          <input type="text" name="firstName" />
+
+          <label for="lastName">last Name</label>
+          <input type="text" name="lastName" />
+
+          <label for="birthDate">birth Date</label>
+          <input type="text" name="birthDate" />
+
+          <select name="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+          </select>
+
+          <label>Is Marriage<input type="checkbox" name="isMarriage"/></label>
+        </div>
+        <button class="cancel">Cancel</button>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

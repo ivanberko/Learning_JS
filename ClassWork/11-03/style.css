@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgray;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 400px;
+  border: 1px solid brown;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: lightsalmon;
+}
+
+input,
+select {
+  display: block;
+  margin-bottom: 10px;
+  width: 300px;
+}
+input[type='checkbox'] {
+  width: auto;
+}
+
+.content {
+  width: 300px;
+  margin: 0 auto;
+}

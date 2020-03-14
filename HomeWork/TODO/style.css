@@ -1,0 +1,86 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 5px;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+}
+
+.nav__link {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #323232;
+}
+
+.nav__link--active {
+  background-color: #3f51b5;
+  color: white;
+  pointer-events: none;
+}
+
+.tags {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.tags__item {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #323232;
+  box-shadow: 0 0 3px 0 #323232;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: #323232;
+  font-weight: 600;
+}
+
+.tags__item:last-child {
+  margin-right: 0;
+}
+
+.editor {
+  padding: 10px 0;
+}
+
+.editor__input {
+  width: 80%;
+  height: 38px;
+  border: 1px solid #323232;
+}
+
+.button {
+  width: 10%;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  background-color: #3f51b5;
+  color: white;
+  padding: 12px 0;
+}
+
+.todo {
+  border: 1px solid #323232;
+}
+.todo__text {
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.todo__actions {
+  margin-bottom: 10px;
+  padding: 0 10px;
+}

@@ -25,10 +25,16 @@ body {
   color: #323232;
 }
 
+.nav__link:hover,
+.nav__link:focus {
+  text-decoration: underline;
+}
+
 .nav__link--active {
   background-color: #3f51b5;
   color: white;
-  pointer-events: none;
+  text-decoration: underline;
+  /* pointer-events: none; */
 }
 
 .tags {
@@ -46,10 +52,16 @@ body {
   margin-right: 5px;
   color: #323232;
   font-weight: 600;
+  outline: none;
 }
 
 .tags__item:last-child {
   margin-right: 0;
+}
+
+.tags__item--active {
+  color: #ffffff;
+  background-color: #2196f3;
 }
 
 .editor {
@@ -63,16 +75,24 @@ body {
 }
 
 .button {
-  width: 10%;
   text-transform: uppercase;
   border-radius: 5px;
   border: none;
   background-color: #3f51b5;
   color: white;
-  padding: 12px 0;
+  padding: 12px 30px;
 }
 
-.todo {
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.todo-list__item {
+  flex: 0 0 33.3333%;
   border: 1px solid #323232;
 }
 .todo__text {

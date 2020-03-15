@@ -18,7 +18,7 @@
 
     <hr />
 
-    <div class="tags">
+    <div class="tags js-tags">
       <button class="tags__item" data-tag="html">html</button>
       <button class="tags__item" data-tag="css">css</button>
       <button class="tags__item" data-tag="javascript">javascript</button>
@@ -32,24 +32,15 @@
 
     <hr />
 
-    <form class="editor">
-      <input class="editor__input" type="text" />
+    <form class="editor js-editor">
+      <input class="editor__input" type="text" name="text" />
       <button class="button" type="submit">Save</button>
     </form>
 
-    <ul class="todo-list">
-      <li class="todo-list__item">
-        <div class="todo">
-          <p class="todo__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores aut
-            dignissimos sit delectus eaque enim at doloribus excepturi nam non.
-          </p>
-          <div class="todo__actions">
-            <button class="button" type="button">Delete</button>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <script src="nav.js" type="module"></script>
+    <ul class="todo-list js-todo-list"></ul>
+
+    <script src="js/tags.js" type="module"></script>
+    <script src="js/nav.js" type="module"></script>
+    <script src="js/todos.js" type="module"></script>
   </body>
 </html>

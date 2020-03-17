@@ -26,25 +26,44 @@ img {
 .list__title {
   display: flex;
   justify-content: space-between;
-  background-color: lightcoral;
+  background-color: #f5af19;
   height: 30px;
 }
 
-.inner-content {
-  display: none;
+.hidden-content {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s linear;
 }
 
 .is-open {
+  height: 300px;
   display: flex;
+  animation: showBlock 1s linear forwards;
 }
 
-.veiw {
-  width: 20px;
-  height: 20px;
-  margin: 5px 5px;
-  transition: all .5s ease;
+@keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.veiw:hover {
+.list__btn {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  border: none;
+  background-color: transparent;
+  background-image: url(img/arrow.png);
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s ease-in-out;
+  outline: none;
+}
+
+.list__btn--transform {
   transform: rotate(0.5turn);
 }

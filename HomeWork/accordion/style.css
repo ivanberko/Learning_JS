@@ -62,6 +62,7 @@ img {
   background-size: contain;
   transition: transform 0.3s ease-in-out;
   outline: none;
+  cursor: pointer;
 }
 
 .list__btn--transform {

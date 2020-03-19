@@ -37,9 +37,9 @@ img {
   transition: filter 0.5s linear;
 }
 
-/* .box__img--filter:hover {
+.box__img--filter:hover {
   filter: none;
-} */
+}
 
 .remove-filter {
   filter: none;

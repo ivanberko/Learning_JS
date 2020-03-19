@@ -8,3 +8,4 @@ import './style.css';
 // getResult.sortRule;
 
 const result = getMaxArrayEl(ourArr, sortRule);
+console.log(result);

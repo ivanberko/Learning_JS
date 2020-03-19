@@ -1,4 +1,6 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -6,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'my-first-webpack.bunble.js',
   },
+
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' },
@@ -15,7 +18,19 @@ module.exports = {
       },
     ],
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({ template: './src/index.html' }),
-  // ],
+
+  plugins: [
+    new CleanWebpackPlugin({
+      verbose: true,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './index.html',
+      inject: true,
+    }),
+  ],
+
+  devServer: {
+    contentBase: './dist',
+  },
 };

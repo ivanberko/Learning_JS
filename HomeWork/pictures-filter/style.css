@@ -1,0 +1,46 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1080px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid #232323;
+  padding: 3px;
+  margin: 3px;
+}
+
+.box__img--filter {
+  filter: blur(15px) grayscale(100%);
+  transition: filter 0.5s linear;
+}
+
+/* .box__img--filter:hover {
+  filter: none;
+} */
+
+.remove-filter {
+  filter: none;
+}

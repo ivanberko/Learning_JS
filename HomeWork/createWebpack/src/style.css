@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lawngreen;
+  color: gray;
+  transform: translate(50%);
+}

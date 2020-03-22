@@ -1,9 +1,16 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+
+}
+html {
+  max-width: 50vw;
 }
 
 body {
-  background-color: lawngreen;
-  color: gray;
+  background-color: white;
+  color: #000000;
   transform: translate(50%);
+  text-align: center;
 }
+

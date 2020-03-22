@@ -1,43 +1,57 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackMerge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'my-first-webpack.bundle.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
+const loadModeConfig = (env) =>
+  require(`./build-utils/${env.mode}.config`)(env);
+
+module.exports = (env) =>
+  webpackMerge(
+    {
+      mode: env.mode,
+      context: path.resolve(__dirname, 'src'),
+      entry: './index.js',
+      output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'my-first-webpack.bundle.js',
       },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: 'babel-loader',
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  name: '[path][name].[ext]',
+                  limit: 8192,
+                  esModule: false,
+                },
+              },
+            ],
+          },
+          {
+            test: /\.hbs$/,
+            use: 'handlebars-loader',
+          },
+          {
+            test: /\.html$/,
+            use: 'html-loader',
+          },
         ],
       },
-    ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/index.html',
-      inject: true,
-    }),
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
-  ],
-  devServer: { port: 4040 },
-  devtool: 'eval-source-map',
-};
+      plugins: [
+        new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
+        new WebpackBar(),
+      ],
+    },
+    loadModeConfig(env),
+  );

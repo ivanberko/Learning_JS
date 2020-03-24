@@ -1,0 +1,10 @@
+{
+  "name": "Ivan",
+  "age": 1,
+  "array": ["item1", "item2", "item3"],
+  "object": {
+    "key": "main",
+    "count": 2,
+    "isTrue": false
+  }
+}

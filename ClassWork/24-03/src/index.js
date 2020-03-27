@@ -3,17 +3,25 @@ import axios from 'axios';
 
 //============AXIOS===================================================================================================================
 
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+  const searchWord = form.querySelector('input').value;
+  e.preventDefault();
+  axios
+    .get(`${BASE_URL}?key=${KEY}&category=industry&q=${searchWord}`)
+    .then((res) => {
+      const gallary = res.data.hits.reduce(
+        (markup, img) => markup + `<img src="${img.webformatURL}" alt="">`,
+        '',
+      );
+      document.body.insertAdjacentHTML('beforeend', gallary);
+    });
+  form.querySelector('input').value = '';
+});
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '13689220-f8624404383f6a2586dfba74c';
-
-axios.get(`${BASE_URL}?key=${KEY}`).then((res) => {
-  const gallary = res.data.hits.reduce(
-    (markup, img) => markup + `<img src="${img.webformatURL}" alt="">`,
-    '',
-  );
-  document.body.insertAdjacentHTML('beforeend', gallary);
-});
 
 //============localStorage=============================================================================================================
 

@@ -16,4 +16,9 @@ export const costOfLiving = {
   deLux: 265,
 };
 
-export const room = ['standart', 'superior', 'FamilyRoom', 'DeLux'];
+export const room = {
+  standart: 'standart',
+  superior: 'superior',
+  familyRoom: 'familyRoom',
+  deLux: 'deLux',
+};

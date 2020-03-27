@@ -28,7 +28,7 @@ export default class Guest {
       .sort((prev, next) => next.quantityDays - prev.quantityDays)
       .filter((user, idx, arr) => arr[0].quantityDays === user.quantityDays);
   }
-  constructor(firstName, lastName, birthDate, gender, isMarriage, room) {
+  constructor({ firstName, lastName, birthDate, gender, isMarriage, room }) {
     this.id = v4();
     this.firstName = firstName;
     this.lastName = lastName;

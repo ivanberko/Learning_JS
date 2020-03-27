@@ -8,6 +8,7 @@
   <body>
     <table>
       <tr>
+        <th>id</th>
         <th>firstName</th>
         <th>lastName</th>
         <th>birthDate</th>
@@ -16,6 +17,8 @@
         <th>visits</th>
         <th>isMarriage</th>
         <th>children</th>
+        <th>room</th>
+        <th>costOfLiving</th>
       </tr>
     </table>
 
@@ -34,17 +37,25 @@
           <label for="birthDate">birth Date</label>
           <input type="text" name="birthDate" />
 
+          <label for="room">room</label>
+          <select name="room">
+            <option value="standart">standart</option>
+            <option value="superior">superior</option>
+            <option value="familyRoom">familyRoom</option>
+            <option value="deLux">DeLux</option>
+          </select>
+
           <select name="gender">
+            <option value="null">---</option>
             <option value="male">male</option>
             <option value="female">female</option>
           </select>
 
           <label>Is Marriage<input type="checkbox" name="isMarriage"/></label>
         </div>
-
+        <button type="button" class="cancel">Cancel</button>
         <button type="submit" class="save">Save</button>
       </form>
-      <button class="cancel">Cancel</button>
     </div>
   </body>
 </html>

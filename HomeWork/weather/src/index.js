@@ -17,12 +17,10 @@ const LocalWeatherType = {
 
 axios
   .get(
-    `${BASE_URL}api/${LocalWeatherType.current}/${location.sweden}?app_id=${APP_ID}&app_key=${APP_KEY}`,
+    `${BASE_URL}api/${LocalWeatherType.forecast}/${location.sweden}?app_id=${APP_ID}&app_key=${APP_KEY}`,
   )
   .then((res) => {
-    console.log(res.data);
-    document.body.insertAdjacentHTML(
-      'beforeend',
-      weatherСardTemplate(res.data),
-    );
+    document
+      .querySelector('.wrapper')
+      .insertAdjacentHTML('beforeend', weatherСardTemplate(res.data.Days));
   });

@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const loadModeConfig = (env) =>
   require(`./build-utils/${env.mode}.config`)(env);
@@ -25,18 +26,12 @@ module.exports = (env) =>
             use: 'babel-loader',
           },
           {
-            test: /\.(gif|png|jpe?g|svg)$/i,
-            use: [
-              {
-                loader: 'url-loader',
-                options: {
-                  name: '[path][name].[ext]',
-                  limit: 8192,
-                  esModule: false,
-                },
-              },
-              'img-loader',
-            ],
+            test: /\.(png|jpe?g|gif)$/i,
+            loader: 'file-loader?name=/images/[name].[ext]',
+            options: {
+              outputPath: 'images',
+              publicPath: 'assets',
+            },
           },
           {
             test: /\.hbs$/,
@@ -52,6 +47,13 @@ module.exports = (env) =>
         new CleanWebpackPlugin(),
         new FriendlyErrorsWebpackPlugin(),
         new WebpackBar(),
+        new CopyWebpackPlugin([
+          {
+            from: 'images',
+            to: 'images',
+            context: path.join(__dirname, 'src'),
+          },
+        ]),
       ],
     },
     loadModeConfig(env),

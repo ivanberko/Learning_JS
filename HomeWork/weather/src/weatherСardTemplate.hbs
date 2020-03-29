@@ -1,7 +1,20 @@
-    <div class="cardWeather">
-      <div class="descWeather">weather description : {{wx_desc}}</div>
-      <div class="imgWeather"><img src="./images/{{wx_icon}}" alt="" /></div>
-      <div class="temp">temperature : {{temp_c}}</div>
-      <div class="feelslike">feel like temperature : {{feelslike_c}}</div>
-      <div class="windspd_ms">maximum mean wind speed : {{windspd_ms}}</div>
-    </div>
+{{#each this}}
+<div class="cardWeather">
+  <div class="dateWeather">local time : {{date}}</div>
+  <div class="sunrise_time">Sunrise time : {{sunrise_time}}</div>
+  <div class="sunset_time">Sunset time : {{sunset_time}}</div>
+  <div class="windspd_ms">Max mean wind speed : {{windgst_max_ms}}</div>
+  <div class="cardWeather__by-day">
+    {{#each Timeframes}}
+    <ul>
+      <li>local time : {{this.time}}</li>
+      <li><img src="http://www.weatherunlocked.com/Images/icons/1/{{this.wx_icon}}" alt="" /></li>
+      <li>weather description : {{this.wx_desc}}</li>
+      <li>temp. : {{this.temp_c}}</li>
+      <li>feel like temp. : {{this.feelslike_c}}</li>
+      <li>max. mean wind speed : {{this.windspd_ms}}</li>
+    </ul>
+    {{/each}}
+  </div>
+</div>
+{{/each}}

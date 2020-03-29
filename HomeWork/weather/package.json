@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "copy-webpack-plugin": "^5.1.1",
     "handlebars": "^4.7.3",
     "lodash.debounce": "^4.0.8",
     "uuid": "^7.0.2"

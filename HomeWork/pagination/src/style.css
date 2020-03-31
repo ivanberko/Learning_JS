@@ -1,16 +1,29 @@
 * {
   box-sizing: border-box;
   margin: 0;
-
-}
-html {
-  max-width: 50vw;
 }
 
 body {
-  background-color: white;
+  background-color: lightsalmon;
   color: #000000;
-  transform: translate(50%);
-  text-align: center;
 }
 
+.article-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.article-list img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.article-list li a {
+  text-decoration: none;
+  color: inherit;
+}

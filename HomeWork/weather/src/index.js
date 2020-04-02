@@ -4,11 +4,10 @@ import { v4 } from 'uuid';
 import debounce from 'lodash.debounce';
 import weatherСardTemplate from './weatherСardTemplate.hbs';
 
-const BASE_URL = 'http://api.weatherunlocked.com/';
-const APP_ID = '27a06a50';
-const APP_KEY = '723500c913cb96146b5927e270fda988';
+const BASE_URL = 'http://api.weatherstack.com';
+const APP_KEY = 'b5b88288e86ca8d964e678bacfad6dc8';
 const location = {
-  sweden: 'se.11144',
+  charkow: 'Charkow,%Ukraine',
 };
 const LocalWeatherType = {
   current: 'current',
@@ -17,10 +16,13 @@ const LocalWeatherType = {
 
 axios
   .get(
-    `${BASE_URL}api/${LocalWeatherType.forecast}/${location.sweden}?app_id=${APP_ID}&app_key=${APP_KEY}`,
+    `${BASE_URL}/${LocalWeatherType.current}?access_key=${APP_KEY}&query=${location.charkow}`,
   )
   .then((res) => {
+    console.log(res.data);
+
     document
       .querySelector('.wrapper')
-      .insertAdjacentHTML('beforeend', weatherСardTemplate(res.data.Days));
+      .insertAdjacentHTML('beforeend', weatherСardTemplate(res.data));
   });
+

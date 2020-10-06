@@ -11,8 +11,13 @@ const app = () => {
 
   const sounds = document.querySelectorAll('.sound-picker button');
   const timeDisplay = document.querySelector('.time-display');
+  const timeSelect = document.querySelectorAll('.time-select button');
 
   const outlineLehgth = outline.getTotalLength();
+  outline.style.strokeDashoffset = outlineLehgth;
+  outline.style.strokeDasharray = outlineLehgth;
+
+  let fakeDuration = 10;
 
   const changePlaying = (song) => {
     if (song.paused) {
@@ -29,6 +34,26 @@ const app = () => {
   play.addEventListener('click', () => {
     changePlaying(song);
   });
+
+  song.ontimeupdate = () => {
+    let currentTime = song.currentTime;
+    console.log(currentTime);
+    let elapsed = fakeDuration - currentTime;
+    let second = Math.floor(elapsed % 60);
+    let minutes = Math.floor(elapsed / 60);
+
+    let progress = outlineLehgth - (currentTime / fakeDuration) * outlineLehgth;
+    outline.style.strokeDashoffset = progress;
+
+    timeDisplay.textContent = `${minutes}:${second}`;
+
+    if (currentTime >= fakeDuration) {
+      song.pause();
+      song.currentTime = 0;
+      video.pause();
+      play.src = pauseImg;
+    }
+  };
 };
 
 app();
